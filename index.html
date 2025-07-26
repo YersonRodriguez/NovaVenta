@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaVenta | Campaña #12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-blue: #0A192F;
+            --light-blue: #172A45;
+            --white: #FFFFFF;
+            --light-gray: #F5F7FA;
+            --dark-gray: #333333;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        /* Estilos de encabezado */
+        .magazine-header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--light-blue) 100%);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .magazine-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .magazine-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .magazine-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--white);
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            opacity: 0.9;
+        }
+        
+        .campaign-number {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Imagen de portada */
+        .featured-image {
+            max-width: 1000px;
+            margin: 3rem auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .featured-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .featured-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.85);
+            color: var(--white);
+            padding: 1rem;
+            font-size: 0.9rem;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        /* Visor PDF */
+        .pdf-viewer-container {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .pdf-viewer-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .pdf-viewer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 600px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: var(--white);
+        }
+        
+        .pdf-viewer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        .magazine-footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            transition: var(--transition);
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .magazine-title {
+                font-size: 3.8rem;
+            }
+            
+            .pdf-viewer {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .magazine-title {
+                font-size: 3rem;
+            }
+            
+            .magazine-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .featured-image {
+                margin: 2rem auto;
+            }
+            
+            .pdf-viewer {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .magazine-header {
+                padding: 2rem 1rem;
+            }
+            
+            .magazine-title {
+                font-size: 2.5rem;
+            }
+            
+            .magazine-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .campaign-number {
+                font-size: 1rem;
+                padding: 0.4rem 1.2rem;
+            }
+            
+            .pdf-viewer-title {
+                font-size: 2rem;
+            }
+            
+            .pdf-viewer {
+                height: 350px;
+            }
+            
+            .footer-logo {
+                font-size: 2rem;
+            }
+        }
+        .whatsapp-boton {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.whatsapp-boton a {
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.whatsapp-boton a:hover {
+    background-color: #1ebe5d;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Encabezado tipo revista -->
+    <header class="magazine-header">
+        <div class="container">
+            <h1 class="magazine-title">NovaVenta</h1>
+            <p class="magazine-subtitle">Bienvenido a la campaña de NovaVenta</p>
+            <div class="campaign-number">Campaña #12</div>
+        </div>
+    </header>
+    
+    <!-- Imagen de portada -->
+    <section class="featured-image">
+        <img src="img/01-logo.webp" alt="Portada de campaña NovaVenta">
+        <div class="image-caption">Explora nuestras increíbles ofertas en esta nueva campaña</div>
+    </section>
+    
+    <!-- Visor PDF -->
+    <section class="pdf-viewer-container">
+        <h2 class="pdf-viewer-title">Catálogo Completo de la Campaña</h2>
+        <div class="pdf-viewer">
+            <iframe src="campañas/campaña11.pdf" title="Catálogo de Campaña NovaVenta #11"></iframe>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="magazine-footer">
+        <div class="footer-content">
+            <div class="footer-logo">NovaVenta</div>
+            <p class="footer-text">Innovando en cada campaña para ofrecerte los mejores productos a precios excepcionales.</p>
+            
+            <div class="whatsapp-boton">
+            <a href="https://wa.me/573122733332?text=Hola,%20estoy%20interesado%20en%20la%20Campaña%20%2311%20de%20NovaVenta" target="_blank">
+                🟢 Comprar por WhatsApp
+            </a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 NovaVenta. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Efecto de aparición gradual para elementos
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeIn 1s forwards`;
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observar elementos que deben aparecer
+            const elements = document.querySelectorAll('.featured-image, .pdf-viewer-container');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
